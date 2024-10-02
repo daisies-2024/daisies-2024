@@ -3,34 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concert Schedule</title>
+    <title>RTD 2024</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Rocking The Daisies 2024</h1>
-        <br>
-        <br>
-        <select id="stageFilter">
-            <option value="all">All</option>
-            <option value="main">Main Stage</option>
-            <option value="beach">Beach Club</option>
-            <option value="maybelline">Maybelline</option>
-            <option value="night">Night Under the Stars</option>
-            <option value="afterparty">Beach Club Afterparty</option>
+        <img src="RTD_logo.png" alt="" class="logo">
+        <select id="stageSelect">
+            <option value="all">Select Stage</option>
+            <option value="Main Stage">Main Stage</option>
+            <option value="Beach Club">Beach Club</option>
+            <option value="Maybelline">Maybelline</option>
+            <option value="Night Under the Stars">Night Under the Stars</option>
+            <option value="Beach Club Afterparty">Beach Club Afterparty</option>
         </select>
-
-        
-        <select id="dayFilter">
-            <option value="all">All Days</option>
+        <select id="daySelect">
+            <option value="all">Select Day</option>
             <option value="Thursday">Thursday</option>
             <option value="Friday">Friday</option>
             <option value="Saturday">Saturday</option>
             <option value="Sunday">Sunday</option>
         </select>
     </header>
-    <main id="schedule"></main>
+    <main id="performanceList">
+        <!-- Performances will be dynamically generated here -->
+    </main>
+
     <script src="data.js"></script>
-    <script src="script.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
