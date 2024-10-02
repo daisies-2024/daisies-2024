@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concert Schedule</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Rocking The Daisies 2024</h1>
+        <br>
+        <br>
+        <select id="stageFilter">
+            <option value="all">All</option>
+            <option value="main">Main Stage</option>
+            <option value="beach">Beach Club</option>
+            <option value="maybelline">Maybelline</option>
+            <option value="night">Night Under the Stars</option>
+            <option value="afterparty">Beach Club Afterparty</option>
+        </select>
+
+        
+        <select id="dayFilter">
+            <option value="all">All Days</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+            <option value="Saturday">Saturday</option>
+            <option value="Sunday">Sunday</option>
+        </select>
+    </header>
+    <main id="schedule"></main>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
