@@ -5,29 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RTD 2024</title>
     <link rel="stylesheet" href="styles.css">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" /> <!-- HTTP 1.1 -->
+    <meta http-equiv="Pragma" content="no-cache" /> <!-- HTTP 1.0 -->
+    <meta http-equiv="Expires" content="0" /> <!-- Proxies -->
 </head>
 <body>
-    <header>
-        <img src="RTD_logo.png" alt="" class="logo">
-        <select id="stageSelect">
-            <option value="all">Select Stage</option>
-            <option value="Main Stage">Main Stage</option>
-            <option value="Beach Club">Beach Club</option>
-            <option value="Maybelline">Maybelline</option>
-            <option value="Night Under the Stars">Night Under the Stars</option>
-            <option value="Beach Club Afterparty">Beach Club Afterparty</option>
-        </select>
-        <select id="daySelect">
-            <option value="all">Select Day</option>
-            <option value="Thursday">Thursday</option>
-            <option value="Friday">Friday</option>
-            <option value="Saturday">Saturday</option>
-            <option value="Sunday">Sunday</option>
-        </select>
-    </header>
-    <main id="performanceList">
-        <!-- Performances will be dynamically generated here -->
-    </main>
+    <div class="container">
+        <img src="RTD_logo.png" alt="Festival Logo" class="logo"> <!-- Update the path to your logo -->
+        
+        <div id="currentArtists"></div> <!-- Section for current artists -->
+
+        <div class="filters">
+            <select id="stage-filter">
+                <option value="all">Stage</option>
+                <option value="Main Stage">Main Stage</option>
+                <option value="Beach Club">Beach Club</option>
+                <option value="Maybelline">Maybelline</option>
+                <option value="Night Under the Stars">Night Under the Stars</option>
+                <option value="Beach Club Afterparty">Beach Club Afterparty</option>
+            </select>
+
+            <select id="day-filter">
+                <option value="all">Day</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+            </select>
+        </div>
+        
+        <div class="performance-list" id="performance-list"></div>
+        
+    </div>
 
     <script src="data.js"></script>
     <script src="app.js"></script>

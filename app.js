@@ -1,6 +1,6 @@
-const stageSelect = document.getElementById('stageSelect');
-const daySelect = document.getElementById('daySelect');
-const performanceList = document.getElementById('performanceList');
+const stageSelect = document.getElementById('stage-filter');
+const daySelect = document.getElementById('day-filter');
+const performanceList = document.getElementById('performance-list');
 
 // Function to get the current time in UTC+2
 function getCurrentTimeUTCPlus2() {
@@ -17,6 +17,28 @@ function formatTime(date) {
     return `${hours}:${minutes}`;
 }
 
+function getCurrentDay() {
+    const currentDayIndex = getCurrentTimeUTCPlus2().getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    return currentDayIndex;
+}
+
+// Create a map of days
+const daysMap = {
+    0: "Sunday",
+    1: "Monday",
+    2: "Tuesday",
+    3: "Wednesday",
+    4: "Thursday",
+    5: "Friday",
+    6: "Saturday"
+};
+
+// Function to get the name of the current day
+function getCurrentDayName() {
+    const currentDayIndex = getCurrentDay();
+    return daysMap[currentDayIndex];
+}
+
 function filterPerformances() {
     const selectedStage = stageSelect.value;
     const selectedDay = daySelect.value;
@@ -25,6 +47,7 @@ function filterPerformances() {
 
     const currentTime = getCurrentTimeUTCPlus2();
     const currentFormattedTime = formatTime(currentTime);
+    console.log(getCurrentDayName())
     let performanceFound = false;
 
     const filteredData = setTimes.filter(set => 
@@ -48,10 +71,10 @@ function filterPerformances() {
             const startTime = formatTime(new Date(currentTime.setHours(startHour, startMinute, 0, 0)));
             const endTime = formatTime(new Date(currentTime.setHours(endHour, endMinute, 0, 0)));
 
-            performanceElement.innerText = `${startTime} - ${performance.artist} (${performance.duration})`;
+            performanceElement.innerText = `${startTime} - ${performance.artist} (${performance.duration} hrs)`;
 
             // Highlight if the performance is currently happening
-            if (currentFormattedTime >= startTime && currentFormattedTime < endTime) {
+            if (currentFormattedTime >= startTime && currentFormattedTime < endTime && getCurrentDayName == selectedDay) {
                 performanceElement.style.backgroundColor = '#ffcc00'; // Highlight color
                 performanceFound = true;
             }
@@ -60,12 +83,17 @@ function filterPerformances() {
         });
     });
 
-    if (!performanceFound) {
+    if (!performanceFound && selectedDay == 'all' && selectedStage == 'all') {
         const noPerformanceElement = document.createElement('div');
         noPerformanceElement.className = 'performance';
-        noPerformanceElement.innerText = 'No performances currently happening.';
+        noPerformanceElement.innerText = 'No performances found.';
         performanceList.appendChild(noPerformanceElement);
-    }
+    } else if (selectedDay == 'all' || selectedStage == 'all') {
+        const noPerformanceElement = document.createElement('div');
+        noPerformanceElement.className = 'performance';
+        noPerformanceElement.innerText = 'Select Stage and Day above.';
+        performanceList.appendChild(noPerformanceElement);
+    } 
 }
 
 stageSelect.addEventListener('change', filterPerformances);
